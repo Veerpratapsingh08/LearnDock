@@ -3,39 +3,52 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import SearchBar from './SearchBar';
+import { categories } from '@/lib/data'; // We need categories for the search bar
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   return (
-    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container">
-        <nav className="flex items-center justify-between h-16">
+    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border h-16">
+      <div className="container h-full">
+        <nav className="flex items-center justify-between h-full gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl">
-            <Image
-              src="/logo.png"
-              alt="LearnDock"
-              width={48}
-              height={48}
-              className="w-12 h-12"
-            />
-            <span className="text-foreground">
+          <Link href="/" className="flex items-center gap-2 font-bold text-xl shrink-0">
+            <div className="relative w-8 h-8">
+                <Image
+                src="/logo.png"
+                alt="LearnDock"
+                fill
+                className="object-contain"
+                />
+            </div>
+            <span className="text-foreground hidden sm:block">
               LearnDock
             </span>
           </Link>
 
+          {/* SearchBar - Hidden on Home, Visible elsewhere */}
+          {!isHome && (
+            <div className="hidden md:block flex-1 max-w-md mx-4">
+              <SearchBar categories={categories} variant="header" />
+            </div>
+          )}
+
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6 shrink-0">
             <Link
               href="/about"
-              className="text-muted-foreground hover:text-primary transition-colors font-medium"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               About
             </Link>
             <Link
               href="/contribute"
-              className="text-muted-foreground hover:text-primary transition-colors font-medium"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Contribute
             </Link>
@@ -43,7 +56,8 @@ export default function Header() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
+              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="GitHub"
             >
               <svg
                 className="w-5 h-5"
@@ -63,7 +77,7 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors text-foreground"
+            className="md:hidden p-2 -mr-2 rounded-lg hover:bg-muted transition-colors text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -94,8 +108,13 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <div className="flex flex-col gap-4">
+          <div className="md:hidden py-4 border-t border-border bg-background absolute left-0 right-0 px-4 shadow-lg">
+             {!isHome && (
+                <div className="mb-4">
+                  <SearchBar categories={categories} variant="header" />
+                </div>
+              )}
+            <div className="flex flex-col gap-2">
               <Link
                 href="/about"
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"

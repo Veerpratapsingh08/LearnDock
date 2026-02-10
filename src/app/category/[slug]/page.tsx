@@ -77,40 +77,43 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </div>
 
         {/* Category Header */}
-        <section className="py-12 bg-gradient-to-b from-muted/20 to-background">
-          <div className="container">
-            <div className="flex items-start gap-4">
-              <span className="text-5xl" role="img" aria-label={category.name}>
+        <section className="py-12 md:py-16 bg-muted/10 border-b border-border">
+          <div className="container max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+              <span className="text-6xl select-none grayscale" role="img" aria-label={category.name}>
                 {category.icon}
               </span>
-              <div>
-                <h1 className="text-3xl font-bold text-foreground">
+              <div className="flex-1">
+                <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
                   {category.name}
                 </h1>
-                <p className="text-muted-foreground mt-2 max-w-2xl">
+                <p className="text-lg text-muted-foreground mt-3 leading-relaxed">
                   {category.description}
                 </p>
-                <p className="text-sm text-muted-foreground mt-3">
-                  {category.playlists.length} curated playlist
-                  {category.playlists.length !== 1 ? 's' : ''}
-                </p>
+                <div className="flex items-center gap-3 mt-4 text-sm text-muted-foreground">
+                     <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary text-secondary-foreground font-medium">
+                        {category.playlists.length} Playlists
+                     </span>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Playlists */}
-        <section className="py-12">
-          <div className="container">
-            <div className="space-y-12">
+        <section className="py-12 md:py-16">
+          <div className="container max-w-3xl mx-auto">
+            <div className="space-y-16">
               {/* Beginner */}
               {beginnerPlaylists.length > 0 && (
-                <div>
-                  <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-green-500"></span>
-                    Beginner
-                  </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3 pb-3 border-b border-border">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
+                        <span className="h-2 w-2 rounded-full bg-green-500"></span>
+                    </span>
+                    <h2 className="text-xl font-semibold text-foreground">Beginner Level</h2>
+                  </div>
+                  <div className="flex flex-col gap-4">
                     {beginnerPlaylists.map((playlist, index) => (
                       <PlaylistCard key={index} playlist={playlist} />
                     ))}
@@ -120,12 +123,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
               {/* Intermediate */}
               {intermediatePlaylists.length > 0 && (
-                <div>
-                  <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
-                    Intermediate
-                  </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3 pb-3 border-b border-border">
+                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-yellow-100 dark:bg-yellow-900/30">
+                        <span className="h-2 w-2 rounded-full bg-yellow-500"></span>
+                    </span>
+                    <h2 className="text-xl font-semibold text-foreground">Intermediate Level</h2>
+                  </div>
+                  <div className="flex flex-col gap-4">
                     {intermediatePlaylists.map((playlist, index) => (
                       <PlaylistCard key={index} playlist={playlist} />
                     ))}
@@ -135,12 +140,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
               {/* Advanced */}
               {advancedPlaylists.length > 0 && (
-                <div>
-                  <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-red-500"></span>
-                    Advanced
-                  </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3 pb-3 border-b border-border">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/30">
+                        <span className="h-2 w-2 rounded-full bg-red-500"></span>
+                    </span>
+                    <h2 className="text-xl font-semibold text-foreground">Advanced Level</h2>
+                  </div>
+                  <div className="flex flex-col gap-4">
                     {advancedPlaylists.map((playlist, index) => (
                       <PlaylistCard key={index} playlist={playlist} />
                     ))}
