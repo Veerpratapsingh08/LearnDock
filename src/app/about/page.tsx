@@ -13,53 +13,53 @@ export default function AboutPage() {
 
       <main className="flex-1 py-16">
         <div className="container">
-          <article className="max-w-3xl mx-auto prose prose-neutral">
-            <h1 className="text-4xl font-bold text-surface-900 mb-8">
+          <article className="max-w-3xl mx-auto prose prose-neutral dark:prose-invert">
+            <h1 className="text-4xl font-bold text-foreground mb-8">
               About LearnDock
             </h1>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-surface-900 mb-4">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">
                 What is LearnDock?
               </h2>
-              <p className="text-surface-600 leading-relaxed mb-4">
+              <p className="text-muted-foreground leading-relaxed mb-4">
                 LearnDock is a community-curated, open-source directory of
                 high-quality YouTube playlists for technical and academic subjects.
                 We help learners find the <strong>right playlist</strong> in seconds,
                 not hours.
               </p>
-              <p className="text-surface-600 leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 No ads. No algorithms. No fluff. Just quality learning resources,
                 curated by the community.
               </p>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-surface-900 mb-4">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">
                 Why we built this
               </h2>
-              <ul className="space-y-3 text-surface-600">
+              <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-3">
-                  <span className="text-primary-500 mt-1">•</span>
+                  <span className="text-primary mt-1">•</span>
                   <span>
                     YouTube search is noisy — quality playlists get buried under
                     clickbait.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-primary-500 mt-1">•</span>
+                  <span className="text-primary mt-1">•</span>
                   <span>
                     Reddit threads and forum lists get outdated within months.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-primary-500 mt-1">•</span>
+                  <span className="text-primary mt-1">•</span>
                   <span>
                     Great playlists are hoarded in private bookmarks, not shared.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-primary-500 mt-1">•</span>
+                  <span className="text-primary mt-1">•</span>
                   <span>
                     Self-learners need trusted starting points, not endless options.
                   </span>
@@ -68,39 +68,39 @@ export default function AboutPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-surface-900 mb-4">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">
                 Our principles
               </h2>
               <div className="grid gap-4">
-                <div className="p-5 bg-surface-50 rounded-lg border border-surface-200">
-                  <h3 className="font-semibold text-surface-900 mb-1">
+                <div className="p-5 bg-card rounded-lg border border-border">
+                  <h3 className="font-semibold text-foreground mb-1">
                     Quality over quantity
                   </h3>
-                  <p className="text-sm text-surface-600">
+                  <p className="text-sm text-muted-foreground">
                     Every playlist is vetted. We reject more than we accept.
                   </p>
                 </div>
-                <div className="p-5 bg-surface-50 rounded-lg border border-surface-200">
-                  <h3 className="font-semibold text-surface-900 mb-1">
+                <div className="p-5 bg-card rounded-lg border border-border">
+                  <h3 className="font-semibold text-foreground mb-1">
                     Community-first
                   </h3>
-                  <p className="text-sm text-surface-600">
+                  <p className="text-sm text-muted-foreground">
                     Open source, transparent, and powered by contributors like you.
                   </p>
                 </div>
-                <div className="p-5 bg-surface-50 rounded-lg border border-surface-200">
-                  <h3 className="font-semibold text-surface-900 mb-1">
+                <div className="p-5 bg-card rounded-lg border border-border">
+                  <h3 className="font-semibold text-foreground mb-1">
                     Minimal by design
                   </h3>
-                  <p className="text-sm text-surface-600">
+                  <p className="text-sm text-muted-foreground">
                     Fast, accessible, no distractions. Works on slow connections.
                   </p>
                 </div>
-                <div className="p-5 bg-surface-50 rounded-lg border border-surface-200">
-                  <h3 className="font-semibold text-surface-900 mb-1">
+                <div className="p-5 bg-card rounded-lg border border-border">
+                  <h3 className="font-semibold text-foreground mb-1">
                     Forever free
                   </h3>
-                  <p className="text-sm text-surface-600">
+                  <p className="text-sm text-muted-foreground">
                     No ads, no paywalls, no tracking. Open source forever.
                   </p>
                 </div>
@@ -108,10 +108,10 @@ export default function AboutPage() {
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-surface-900 mb-4">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">
                 Open Source
               </h2>
-              <p className="text-surface-600 leading-relaxed mb-4">
+              <p className="text-muted-foreground leading-relaxed mb-4">
                 LearnDock is 100% open source. The entire codebase, including all
                 playlist data, is available on GitHub.
               </p>
@@ -119,7 +119,7 @@ export default function AboutPage() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-surface-900 text-white px-5 py-2.5 rounded-lg hover:bg-surface-800 transition-colors font-medium"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-lg hover:bg-primary/90 transition-colors font-medium"
               >
                 <svg
                   className="w-5 h-5"
@@ -138,10 +138,10 @@ export default function AboutPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-surface-900 mb-4">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">
                 Contact
               </h2>
-              <p className="text-surface-600 leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 Have questions, feedback, or want to report an issue? Open an issue
                 on GitHub or start a discussion. We&apos;d love to hear from you.
               </p>

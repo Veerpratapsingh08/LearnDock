@@ -9,39 +9,25 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   return (
     <Link
       href={`/category/${category.slug}`}
-      className="group block p-6 bg-white rounded-2xl border border-surface-200 hover:border-primary-300 hover:shadow-lg hover:shadow-primary-500/10 transition-all duration-300"
+      className="group block p-4 bg-card rounded-lg border border-border hover:border-primary/50 transition-all duration-200"
     >
-      <div className="flex items-start gap-4">
-        <span className="text-4xl" role="img" aria-label={category.name}>
+      <div className="flex items-start gap-3">
+        <span className="text-3xl" role="img" aria-label={category.name}>
           {category.icon}
         </span>
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-lg text-surface-900 group-hover:text-primary-600 transition-colors">
+          <h3 className="font-medium text-card-foreground group-hover:text-primary transition-colors">
             {category.name}
           </h3>
-          <p className="text-sm text-surface-500 mt-1 line-clamp-2">
+          <p className="text-sm text-muted-foreground mt-0.5 line-clamp-1">
             {category.description}
           </p>
-          <div className="flex items-center gap-2 mt-3">
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary-50 text-primary-700">
-              {category.playlists.length} Playlists
-            </span>
-          </div>
+          <span className="inline-flex items-center mt-2 text-xs text-muted-foreground">
+            {category.playlists.length} playlists
+          </span>
         </div>
-        <svg
-          className="w-5 h-5 text-surface-400 group-hover:text-primary-500 group-hover:translate-x-1 transition-all"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5l7 7-7 7"
-          />
-        </svg>
       </div>
     </Link>
   );
 }
+

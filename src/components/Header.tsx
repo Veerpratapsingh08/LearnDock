@@ -1,19 +1,26 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-surface-200">
+    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container">
         <nav className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 font-bold text-xl">
-            <span className="text-2xl">📚</span>
-            <span className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
+            <Image
+              src="/logo.png"
+              alt="LearnDock"
+              width={48}
+              height={48}
+              className="w-12 h-12"
+            />
+            <span className="text-foreground">
               LearnDock
             </span>
           </Link>
@@ -21,20 +28,14 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <Link
-              href="/"
-              className="text-surface-800 hover:text-primary-600 transition-colors font-medium"
-            >
-              Browse
-            </Link>
-            <Link
               href="/about"
-              className="text-surface-800 hover:text-primary-600 transition-colors font-medium"
+              className="text-muted-foreground hover:text-primary transition-colors font-medium"
             >
               About
             </Link>
             <Link
               href="/contribute"
-              className="text-surface-800 hover:text-primary-600 transition-colors font-medium"
+              className="text-muted-foreground hover:text-primary transition-colors font-medium"
             >
               Contribute
             </Link>
@@ -42,7 +43,7 @@ export default function Header() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-surface-900 text-white px-4 py-2 rounded-lg hover:bg-surface-800 transition-colors font-medium"
+              className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
             >
               <svg
                 className="w-5 h-5"
@@ -56,13 +57,13 @@ export default function Header() {
                   clipRule="evenodd"
                 />
               </svg>
-              GitHub
             </a>
           </div>
 
+
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-surface-100 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -93,25 +94,18 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-surface-200">
+          <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
               <Link
-                href="/"
-                className="text-surface-800 hover:text-primary-600 transition-colors font-medium py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Browse
-              </Link>
-              <Link
                 href="/about"
-                className="text-surface-800 hover:text-primary-600 transition-colors font-medium py-2"
+                className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 href="/contribute"
-                className="text-surface-800 hover:text-primary-600 transition-colors font-medium py-2"
+                className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contribute
@@ -120,7 +114,7 @@ export default function Header() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-surface-900 text-white px-4 py-2 rounded-lg hover:bg-surface-800 transition-colors font-medium w-fit"
+                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors py-2"
               >
                 <svg
                   className="w-5 h-5"
@@ -143,3 +137,4 @@ export default function Header() {
     </header>
   );
 }
+

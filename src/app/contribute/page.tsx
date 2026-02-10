@@ -14,30 +14,30 @@ export default function ContributePage() {
       <main className="flex-1 py-16">
         <div className="container">
           <article className="max-w-3xl mx-auto">
-            <h1 className="text-4xl font-bold text-surface-900 mb-4">
+            <h1 className="text-4xl font-bold text-foreground mb-4">
               Contribute a Playlist
             </h1>
-            <p className="text-lg text-surface-600 mb-12">
+            <p className="text-lg text-muted-foreground mb-12">
               Help the community discover quality learning resources. It only takes
               a few minutes.
             </p>
 
             {/* Steps */}
             <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-surface-900 mb-6">
+              <h2 className="text-2xl font-semibold text-foreground mb-6">
                 How to contribute
               </h2>
 
               <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center font-semibold text-sm">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold text-sm">
                     1
                   </div>
                   <div>
-                    <h3 className="font-semibold text-surface-900 mb-1">
+                    <h3 className="font-semibold text-foreground mb-1">
                       Fork the repository
                     </h3>
-                    <p className="text-surface-600 text-sm">
+                    <p className="text-muted-foreground text-sm">
                       Go to our GitHub repo and click &quot;Fork&quot; to create your own
                       copy.
                     </p>
@@ -45,32 +45,32 @@ export default function ContributePage() {
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center font-semibold text-sm">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold text-sm">
                     2
                   </div>
                   <div>
-                    <h3 className="font-semibold text-surface-900 mb-1">
+                    <h3 className="font-semibold text-foreground mb-1">
                       Find the right category file
                     </h3>
-                    <p className="text-surface-600 text-sm mb-2">
-                      Navigate to <code className="bg-surface-100 px-1.5 py-0.5 rounded text-sm">data/</code> and
-                      open the JSON file for your category (e.g., <code className="bg-surface-100 px-1.5 py-0.5 rounded text-sm">dsa.json</code>).
+                    <p className="text-muted-foreground text-sm mb-2">
+                      Navigate to <code className="bg-muted px-1.5 py-0.5 rounded text-sm text-foreground">data/</code> and
+                      open the JSON file for your category (e.g., <code className="bg-muted px-1.5 py-0.5 rounded text-sm text-foreground">dsa.json</code>).
                     </p>
                   </div>
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center font-semibold text-sm">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold text-sm">
                     3
                   </div>
                   <div>
-                    <h3 className="font-semibold text-surface-900 mb-1">
+                    <h3 className="font-semibold text-foreground mb-1">
                       Add your playlist entry
                     </h3>
-                    <p className="text-surface-600 text-sm mb-3">
+                    <p className="text-muted-foreground text-sm mb-3">
                       Add a new entry following this format:
                     </p>
-                    <pre className="bg-surface-900 text-surface-100 p-4 rounded-lg text-sm overflow-x-auto">
+                    <pre className="bg-card border border-border text-foreground p-4 rounded-lg text-sm overflow-x-auto">
 {`{
   "title": "Playlist Title",
   "creator": "Channel Name",
@@ -86,14 +86,14 @@ export default function ContributePage() {
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center font-semibold text-sm">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold text-sm">
                     4
                   </div>
                   <div>
-                    <h3 className="font-semibold text-surface-900 mb-1">
+                    <h3 className="font-semibold text-foreground mb-1">
                       Submit a Pull Request
                     </h3>
-                    <p className="text-surface-600 text-sm">
+                    <p className="text-muted-foreground text-sm">
                       Commit your changes and open a PR. We review submissions within
                       48 hours.
                     </p>
@@ -104,19 +104,19 @@ export default function ContributePage() {
 
             {/* Acceptance Criteria */}
             <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-surface-900 mb-6">
+              <h2 className="text-2xl font-semibold text-foreground mb-6">
                 What we look for
               </h2>
 
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-5 border border-green-200 bg-green-50 rounded-lg">
-                  <h3 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
+                <div className="p-5 border border-green-500/20 bg-green-500/5 rounded-lg">
+                  <h3 className="font-semibold text-green-600 mb-3 flex items-center gap-2">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     We accept
                   </h3>
-                  <ul className="space-y-2 text-sm text-green-700">
+                  <ul className="space-y-2 text-sm text-green-600/90">
                     <li>• Hosted on YouTube (public playlist)</li>
                     <li>• Minimum 5 videos</li>
                     <li>• Focused on one topic</li>
@@ -125,14 +125,14 @@ export default function ContributePage() {
                   </ul>
                 </div>
 
-                <div className="p-5 border border-red-200 bg-red-50 rounded-lg">
-                  <h3 className="font-semibold text-red-800 mb-3 flex items-center gap-2">
+                <div className="p-5 border border-red-500/20 bg-red-500/5 rounded-lg">
+                  <h3 className="font-semibold text-red-600 mb-3 flex items-center gap-2">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                     We reject
                   </h3>
-                  <ul className="space-y-2 text-sm text-red-700">
+                  <ul className="space-y-2 text-sm text-red-600/90">
                     <li>• Unknown/anonymous creators</li>
                     <li>• Outdated content (deprecated tech)</li>
                     <li>• Incomplete or abandoned playlists</li>
@@ -145,10 +145,10 @@ export default function ContributePage() {
 
             {/* Report Issues */}
             <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-surface-900 mb-4">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">
                 Report a problem
               </h2>
-              <p className="text-surface-600 mb-4">
+              <p className="text-muted-foreground mb-4">
                 Found a dead link, outdated playlist, or have a suggestion? Open an
                 issue on GitHub.
               </p>
@@ -156,7 +156,7 @@ export default function ContributePage() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium"
+                className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
               >
                 Open an issue
                 <svg
@@ -176,18 +176,18 @@ export default function ContributePage() {
             </section>
 
             {/* CTA */}
-            <section className="p-8 bg-gradient-to-r from-primary-50 to-primary-100 rounded-2xl text-center">
-              <h2 className="text-xl font-semibold text-surface-900 mb-2">
+            <section className="p-8 bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl text-center border border-primary/10">
+              <h2 className="text-xl font-semibold text-foreground mb-2">
                 Ready to contribute?
               </h2>
-              <p className="text-surface-600 mb-6">
+              <p className="text-muted-foreground mb-6">
                 Your contribution helps thousands of learners find quality resources.
               </p>
               <a
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-surface-900 text-white px-6 py-3 rounded-lg hover:bg-surface-800 transition-colors font-medium"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium"
               >
                 <svg
                   className="w-5 h-5"

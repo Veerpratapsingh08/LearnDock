@@ -75,7 +75,7 @@ export default function SearchBar({ categories }: SearchBarProps) {
     <div className="search-container relative w-full max-w-2xl mx-auto">
       <div className="relative">
         <svg
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-surface-400"
+          className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -92,7 +92,7 @@ export default function SearchBar({ categories }: SearchBarProps) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search playlists, creators, topics..."
-          className="w-full pl-12 pr-4 py-4 text-lg bg-white border border-surface-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all shadow-sm hover:shadow-md"
+          className="w-full pl-12 pr-4 py-4 text-lg bg-card border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm hover:shadow-md text-foreground placeholder:text-muted-foreground"
           onFocus={() => query.trim() && setIsOpen(true)}
         />
         {query && (
@@ -102,11 +102,11 @@ export default function SearchBar({ categories }: SearchBarProps) {
               setResults([]);
               setIsOpen(false);
             }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-surface-100 rounded-full transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-muted rounded-full transition-colors"
             aria-label="Clear search"
           >
             <svg
-              className="w-5 h-5 text-surface-400"
+              className="w-5 h-5 text-muted-foreground"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -124,16 +124,16 @@ export default function SearchBar({ categories }: SearchBarProps) {
 
       {/* Search Results Dropdown */}
       {isOpen && results.length > 0 && (
-        <div className="absolute z-50 w-full mt-2 bg-white border border-surface-200 rounded-xl shadow-xl max-h-[70vh] overflow-y-auto">
+        <div className="absolute z-50 w-full mt-2 bg-card border border-border rounded-xl shadow-xl max-h-[70vh] overflow-y-auto">
           <div className="p-2">
-            <p className="text-xs text-surface-500 px-3 py-2">
+            <p className="text-xs text-muted-foreground px-3 py-2">
               {results.length} result{results.length !== 1 ? 's' : ''} found
             </p>
             <div className="space-y-2">
               {results.map((result, index) => (
                 <div key={`${result.categorySlug}-${index}`}>
                   <div className="px-3 py-1">
-                    <span className="text-xs font-medium text-primary-600">
+                    <span className="text-xs font-medium text-primary">
                       {result.categoryName}
                     </span>
                   </div>
@@ -147,11 +147,11 @@ export default function SearchBar({ categories }: SearchBarProps) {
 
       {/* No results */}
       {isOpen && query.trim() && results.length === 0 && (
-        <div className="absolute z-50 w-full mt-2 bg-white border border-surface-200 rounded-xl shadow-xl p-6 text-center">
-          <p className="text-surface-500">
+        <div className="absolute z-50 w-full mt-2 bg-card border border-border rounded-xl shadow-xl p-6 text-center">
+          <p className="text-muted-foreground">
             No playlists found for &quot;{query}&quot;
           </p>
-          <p className="text-sm text-surface-400 mt-1">
+          <p className="text-sm text-muted-foreground mt-1">
             Try different keywords or browse categories below
           </p>
         </div>

@@ -59,17 +59,17 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
       <main className="flex-1">
         {/* Breadcrumb */}
-        <div className="bg-surface-50 border-b border-surface-200">
+        <div className="bg-muted/10 border-b border-border">
           <div className="container py-4">
             <nav className="flex items-center gap-2 text-sm">
               <Link
                 href="/"
-                className="text-surface-500 hover:text-primary-600 transition-colors"
+                className="text-muted-foreground hover:text-primary transition-colors"
               >
                 Home
               </Link>
-              <span className="text-surface-300">/</span>
-              <span className="text-surface-900 font-medium">
+              <span className="text-muted-foreground/50">/</span>
+              <span className="text-foreground font-medium">
                 {category.name}
               </span>
             </nav>
@@ -77,20 +77,20 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </div>
 
         {/* Category Header */}
-        <section className="py-12 bg-gradient-to-b from-surface-50 to-white">
+        <section className="py-12 bg-gradient-to-b from-muted/20 to-background">
           <div className="container">
             <div className="flex items-start gap-4">
               <span className="text-5xl" role="img" aria-label={category.name}>
                 {category.icon}
               </span>
               <div>
-                <h1 className="text-3xl font-bold text-surface-900">
+                <h1 className="text-3xl font-bold text-foreground">
                   {category.name}
                 </h1>
-                <p className="text-surface-600 mt-2 max-w-2xl">
+                <p className="text-muted-foreground mt-2 max-w-2xl">
                   {category.description}
                 </p>
-                <p className="text-sm text-surface-500 mt-3">
+                <p className="text-sm text-muted-foreground mt-3">
                   {category.playlists.length} curated playlist
                   {category.playlists.length !== 1 ? 's' : ''}
                 </p>
@@ -106,7 +106,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               {/* Beginner */}
               {beginnerPlaylists.length > 0 && (
                 <div>
-                  <h2 className="text-xl font-semibold text-surface-900 mb-4 flex items-center gap-2">
+                  <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                     <span className="w-3 h-3 rounded-full bg-green-500"></span>
                     Beginner
                   </h2>
@@ -121,7 +121,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               {/* Intermediate */}
               {intermediatePlaylists.length > 0 && (
                 <div>
-                  <h2 className="text-xl font-semibold text-surface-900 mb-4 flex items-center gap-2">
+                  <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                     <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
                     Intermediate
                   </h2>
@@ -136,7 +136,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               {/* Advanced */}
               {advancedPlaylists.length > 0 && (
                 <div>
-                  <h2 className="text-xl font-semibold text-surface-900 mb-4 flex items-center gap-2">
+                  <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                     <span className="w-3 h-3 rounded-full bg-red-500"></span>
                     Advanced
                   </h2>
@@ -152,11 +152,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </section>
 
         {/* Back link */}
-        <section className="py-8 border-t border-surface-200">
+        <section className="py-8 border-t border-border">
           <div className="container">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium"
+              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
             >
               <svg
                 className="w-4 h-4"

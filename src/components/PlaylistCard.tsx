@@ -5,9 +5,9 @@ interface PlaylistCardProps {
 }
 
 const difficultyColors = {
-  beginner: 'bg-green-50 text-green-700 border-green-200',
-  intermediate: 'bg-yellow-50 text-yellow-700 border-yellow-200',
-  advanced: 'bg-red-50 text-red-700 border-red-200',
+  beginner: 'bg-green-500/10 text-green-600 border-green-500/20',
+  intermediate: 'bg-yellow-500/10 text-yellow-600 border-yellow-500/20',
+  advanced: 'bg-red-500/10 text-red-600 border-red-500/20',
 };
 
 const difficultyLabels = {
@@ -22,20 +22,21 @@ export default function PlaylistCard({ playlist }: PlaylistCardProps) {
       href={playlist.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block p-5 bg-white rounded-xl border border-surface-200 hover:border-primary-300 hover:shadow-md transition-all duration-200"
+      className="group block p-4 bg-card rounded-lg border border-border hover:border-primary/50 transition-all duration-200"
     >
+
       <div className="flex flex-col gap-3">
         {/* Title & Creator */}
         <div>
-          <h3 className="font-semibold text-surface-900 group-hover:text-primary-600 transition-colors line-clamp-2">
+          <h3 className="font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-2">
             {playlist.title}
           </h3>
-          <p className="text-sm text-surface-500 mt-1">by {playlist.creator}</p>
+          <p className="text-sm text-muted-foreground mt-1">by {playlist.creator}</p>
         </div>
 
         {/* Description */}
         {playlist.description && (
-          <p className="text-sm text-surface-600 line-clamp-2">
+          <p className="text-sm text-muted-foreground line-clamp-2">
             {playlist.description}
           </p>
         )}
@@ -50,27 +51,27 @@ export default function PlaylistCard({ playlist }: PlaylistCardProps) {
           </span>
 
           {/* Language */}
-          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-100 text-surface-600 border border-surface-200">
+          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-secondary text-secondary-foreground border border-border">
             {playlist.language}
           </span>
 
           {/* Video Count */}
           {playlist.videoCount && (
-            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-100 text-surface-600 border border-surface-200">
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-secondary text-secondary-foreground border border-border">
               {playlist.videoCount} videos
             </span>
           )}
 
           {/* Year */}
           {playlist.year && (
-            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-100 text-surface-500 border border-surface-200">
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-secondary text-secondary-foreground border border-border">
               {playlist.year}
             </span>
           )}
         </div>
 
         {/* External link indicator */}
-        <div className="flex items-center gap-1 text-xs text-primary-600 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="flex items-center gap-1 text-xs text-primary mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
           <span>Open on YouTube</span>
           <svg
             className="w-3.5 h-3.5"
