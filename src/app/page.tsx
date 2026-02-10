@@ -11,7 +11,7 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-20 md:py-32 relative overflow-hidden">
+        <section className="pt-20 md:pt-32 pb-40 md:pb-48 relative">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background"></div>
           <div className="container relative z-10">
             <div className="text-center max-w-4xl mx-auto mb-12">
@@ -24,12 +24,6 @@ export default function Home() {
             </div>
 
             <SearchBar categories={categories} variant="hero" />
-            
-             <div className="mt-8 text-center">
-                <p className="text-sm text-muted-foreground/60">
-                    Trusted by open source contributors
-                </p>
-            </div>
           </div>
         </section>
 

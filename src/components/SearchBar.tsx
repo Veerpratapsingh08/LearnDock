@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import Fuse from 'fuse.js';
 import { Category, Playlist } from '@/types';
 import PlaylistCard from './PlaylistCard';
@@ -17,11 +17,15 @@ interface SearchResult {
   categorySlug: string;
 }
 
+const SUGGESTION_CHIPS = ['DSA', 'Python', 'Web Dev', 'System Design'];
+
 export default function SearchBar({ categories, variant = 'hero' }: SearchBarProps) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // Flatten all playlists with category info
   const allPlaylists = useMemo(() => {
@@ -40,22 +44,19 @@ export default function SearchBar({ categories, variant = 'hero' }: SearchBarPro
       keys: [
         { name: 'playlist.title', weight: 2 },
         { name: 'playlist.creator', weight: 1.5 },
-        // { name: 'playlist.description', weight: 1 }, // Reduced weight or removed to focus on title/creator
         { name: 'categoryName', weight: 0.5 },
         { name: 'playlist.language', weight: 0.3 },
       ],
-      threshold: 0.3, // Stricter threshold
+      threshold: 0.3,
       includeScore: true,
     });
   }, [allPlaylists]);
 
-  const [activeIndex, setActiveIndex] = useState(-1);
-
   // Search on query change
   useEffect(() => {
-    setActiveIndex(-1); // Reset selection on query change
+    setActiveIndex(-1);
     if (query.trim()) {
-      const searchResults = fuse.search(query).slice(0, 5); // Limit to top 5 for cleaner dropdown
+      const searchResults = fuse.search(query).slice(0, 5);
       setResults(searchResults.map((r) => r.item));
       setIsOpen(true);
     } else {
@@ -66,6 +67,11 @@ export default function SearchBar({ categories, variant = 'hero' }: SearchBarPro
 
   // Handle keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      setIsOpen(false);
+      return;
+    }
+
     if (!isOpen || results.length === 0) return;
 
     if (e.key === 'ArrowDown') {
@@ -78,12 +84,22 @@ export default function SearchBar({ categories, variant = 'hero' }: SearchBarPro
       if (activeIndex >= 0) {
         e.preventDefault();
         window.open(results[activeIndex].playlist.url, '_blank', 'noopener,noreferrer');
-        // Optional: clear search or close
       }
-    } else if (e.key === 'Escape') {
-      setIsOpen(false);
     }
   };
+
+  // ⌘K / Ctrl+K global shortcut
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleGlobalKeyDown);
+    return () => document.removeEventListener('keydown', handleGlobalKeyDown);
+  }, []);
 
   // Close on click outside
   useEffect(() => {
@@ -108,19 +124,21 @@ export default function SearchBar({ categories, variant = 'hero' }: SearchBarPro
           </svg>
         </div>
         <input
+          ref={inputRef}
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={isHero ? "Search playlists, creators, topics..." : "Search..."}
           className={`block w-full rounded-xl border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200
             ${isHero 
-              ? 'pl-12 pr-4 py-4 text-lg border-border shadow-sm hover:shadow-md' 
-              : 'pl-10 pr-4 py-2 text-sm border-border/50 hover:border-border'
+              ? 'pl-12 pr-16 py-4 text-lg border-border shadow-sm hover:shadow-md' 
+              : 'pl-10 pr-12 py-2 text-sm border-border/50 hover:border-border'
             }
           `}
           onFocus={() => query.trim() && setIsOpen(true)}
         />
-        {query && (
+        {/* ⌘K hint or clear button */}
+        {query ? (
           <button
             onClick={() => {
               setQuery('');
@@ -133,21 +151,47 @@ export default function SearchBar({ categories, variant = 'hero' }: SearchBarPro
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
+        ) : (
+          <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+            <kbd className={`hidden sm:inline-flex items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono font-medium text-muted-foreground ${isHero ? 'text-xs' : 'text-[10px]'}`}>
+              ⌘K
+            </kbd>
+          </div>
         )}
       </div>
 
+      {/* Suggestion Chips — hero variant only */}
+      {isHero && !isOpen && (
+        <div className="flex items-center justify-center gap-2 mt-4 flex-wrap">
+          <span className="text-xs text-muted-foreground/60">Try:</span>
+          {SUGGESTION_CHIPS.map((chip) => (
+            <button
+              key={chip}
+              onClick={() => {
+                setQuery(chip);
+                inputRef.current?.focus();
+              }}
+              className="px-3 py-1 text-xs rounded-full border border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-150"
+            >
+              {chip}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Results Dropdown */}
       {isOpen && (
-        <div className="absolute z-50 w-full mt-2 origin-top-left bg-popover border border-border rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden animate-in fade-in zoom-in-95 duration-100">
+        <div className="absolute z-50 w-full mt-2 origin-top-left bg-popover border border-border rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 overflow-y-auto max-h-[480px] animate-in fade-in zoom-in-95 duration-100">
           {results.length > 0 ? (
             <div className="py-2">
-               <div className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                  Playlists
-                </div>
+              <div className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider flex items-center justify-between">
+                <span>Playlists</span>
+                <span className="normal-case font-normal">{results.length} found</span>
+              </div>
               {results.map((result, index) => (
                 <div 
                     key={`${result.categorySlug}-${index}`} 
-                    className={`border-b border-border/50 last:border-0 ${index === activeIndex ? 'bg-muted/50' : ''}`}
+                    className={`border-b border-border/50 last:border-0 cursor-pointer ${index === activeIndex ? 'bg-muted/50' : ''}`}
                     onClick={() => {
                         window.open(result.playlist.url, '_blank', 'noopener,noreferrer');
                     }}
@@ -156,13 +200,19 @@ export default function SearchBar({ categories, variant = 'hero' }: SearchBarPro
                 </div>
               ))}
               <div className="bg-muted/30 px-4 py-2 text-xs text-center text-muted-foreground border-t border-border">
-                Press generic keywords to find more
+                ↑↓ to navigate · Enter to open · Esc to close
               </div>
             </div>
           ) : (
-             <div className="p-8 text-center">
-                <p className="text-muted-foreground text-sm">No results found for &quot;{query}&quot;</p>
-             </div>
+            <div className="p-8 text-center">
+              <p className="text-muted-foreground text-sm mb-3">No playlists for &quot;{query}&quot; yet.</p>
+              <Link 
+                href="/contribute" 
+                className="text-primary hover:text-primary/80 text-sm font-medium transition-colors"
+              >
+                Suggest one →
+              </Link>
+            </div>
           )}
         </div>
       )}

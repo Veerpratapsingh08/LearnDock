@@ -107,7 +107,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               {/* Beginner */}
               {beginnerPlaylists.length > 0 && (
                 <div className="space-y-6">
-                  <div className="flex items-center gap-3 pb-3 border-b border-border">
+                  <div className="sticky top-16 z-10 bg-background flex items-center gap-3 pb-3 pt-4 -mt-4 border-b border-border">
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
                         <span className="h-2 w-2 rounded-full bg-green-500"></span>
                     </span>
@@ -124,7 +124,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               {/* Intermediate */}
               {intermediatePlaylists.length > 0 && (
                 <div className="space-y-6">
-                  <div className="flex items-center gap-3 pb-3 border-b border-border">
+                  <div className="sticky top-16 z-10 bg-background flex items-center gap-3 pb-3 pt-4 -mt-4 border-b border-border">
                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-yellow-100 dark:bg-yellow-900/30">
                         <span className="h-2 w-2 rounded-full bg-yellow-500"></span>
                     </span>
@@ -141,7 +141,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               {/* Advanced */}
               {advancedPlaylists.length > 0 && (
                 <div className="space-y-6">
-                  <div className="flex items-center gap-3 pb-3 border-b border-border">
+                  <div className="sticky top-16 z-10 bg-background flex items-center gap-3 pb-3 pt-4 -mt-4 border-b border-border">
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/30">
                         <span className="h-2 w-2 rounded-full bg-red-500"></span>
                     </span>

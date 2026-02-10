@@ -116,7 +116,7 @@ export default function AboutPage() {
                 playlist data, is available on GitHub.
               </p>
               <a
-                href="https://github.com"
+                href="https://github.com/Veerpratapsingh08/LearnDock"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-lg hover:bg-primary/90 transition-colors font-medium"

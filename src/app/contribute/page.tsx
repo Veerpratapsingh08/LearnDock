@@ -153,7 +153,7 @@ export default function ContributePage() {
                 issue on GitHub.
               </p>
               <a
-                href="https://github.com"
+                href="https://github.com/Veerpratapsingh08/LearnDock"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
@@ -184,7 +184,7 @@ export default function ContributePage() {
                 Your contribution helps thousands of learners find quality resources.
               </p>
               <a
-                href="https://github.com"
+                href="https://github.com/Veerpratapsingh08/LearnDock"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium"

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import SearchBar from './SearchBar';
-import { categories } from '@/lib/data'; // We need categories for the search bar
+import { categories } from '@/lib/data';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -17,15 +17,15 @@ export default function Header() {
       <div className="container h-full">
         <nav className="flex items-center justify-between h-full gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl shrink-0">
-            <div className="relative w-8 h-8">
-                <Image
-                src="/logo.png"
-                alt="LearnDock"
-                fill
-                className="object-contain"
-                />
-            </div>
+          <Link href="/" className="flex items-center gap-3 font-bold text-xl shrink-0">
+            <Image
+              src="/logo.svg"
+              alt="LearnDock"
+              width={80}
+              height={80}
+              className="w-14 h-14 object-contain"
+              priority
+            />
             <span className="text-foreground hidden sm:block">
               LearnDock
             </span>
@@ -53,7 +53,7 @@ export default function Header() {
               Contribute
             </Link>
             <a
-              href="https://github.com"
+              href="https://github.com/Veerpratapsingh08/LearnDock"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-muted-foreground hover:text-foreground transition-colors"
@@ -73,7 +73,6 @@ export default function Header() {
               </svg>
             </a>
           </div>
-
 
           {/* Mobile menu button */}
           <button
@@ -130,7 +129,7 @@ export default function Header() {
                 Contribute
               </Link>
               <a
-                href="https://github.com"
+                href="https://github.com/Veerpratapsingh08/LearnDock"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors py-2"
@@ -156,4 +155,3 @@ export default function Header() {
     </header>
   );
 }
-

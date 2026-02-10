@@ -68,6 +68,12 @@ export default function PlaylistCard({ playlist }: PlaylistCardProps) {
                 <span className="text-xs text-muted-foreground">{playlist.videoCount} videos</span>
                 </>
             )}
+            {playlist.year && (
+                <>
+                <span className="text-muted-foreground text-xs">•</span>
+                <span className="text-xs text-muted-foreground">{playlist.year}</span>
+                </>
+            )}
           </div>
         </div>
       </div>
