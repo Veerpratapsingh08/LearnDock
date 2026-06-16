@@ -11,7 +11,7 @@ LearnDock is an open-source directory of high-quality YouTube playlists for tech
 
 **No ads. No algorithms. No fluff.** Just quality learning resources, curated by the community.
 
-🔗 **Live site**: [Coming soon]
+🔗 **Live site**: (https://learn-dock.vercel.app/)
 
 ## Features
 
